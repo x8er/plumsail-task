@@ -1,27 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <Title>Anything</Title>
+  <Settings v-show="showSettings" @close="handleSettingsSwitcherClick" />
+  <img
+    class="settings-switcher icon-as-button"
+    @click="handleSettingsSwitcherClick"
+    :src="showSettings ? CloseIcon : GearIcon"
+    alt="Settings Icon"
+  />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import Title from "@/components/Title.vue";
+import Settings from "@/components/Settings.vue";
+import GearIcon from "@/assets/gear.svg";
+import CloseIcon from "@/assets/close.svg";
 
-export default defineComponent({
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-});
+const showSettings = ref(false);
+
+const handleSettingsSwitcherClick = () => {
+  showSettings.value = !showSettings.value;
+};
 </script>
 
 <style lang="scss">
-#app {
+@import "@/assets/styles.css";
+
+weather-widget {
+  position: relative;
+  display: inline-block;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 200px;
+
+  .settings-switcher {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 16px;
+  }
 }
 </style>
