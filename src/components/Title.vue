@@ -1,21 +1,15 @@
 <template>
-  <div class="title">
-    <span><slot></slot></span>
-  </div>
+  <span class="title"><slot></slot></span>
 </template>
 
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 6px 0;
-
-  span {
-    font-size: 12px;
-    font-weight: 600;
-  }
+  line-height: 1;
+  font-size: 12px;
+  font-weight: 600;
 }
 </style>

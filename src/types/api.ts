@@ -1,4 +1,4 @@
-export interface ICoordinatesResponse {
+export interface ICityDataResponse {
   /**
    * Name of the found location
    */

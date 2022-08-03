@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from "vue";
 import Title from "@/components/Title.vue";
-import { getCoordinates, getWeather } from "@/api";
+import { getCityData, getWeather } from "@/api";
 import { getWeatherImage } from "@/utils";
 import { IWeatherResponse } from "@/types/api.js";
 
@@ -31,10 +31,11 @@ const weatherData = ref<IWeatherResponse>({
 });
 
 onBeforeMount(async () => {
-  const coordinates = await getCoordinates(props.city);
+  const coordinates = await getCityData(
+    props.city.replace(/ /g, "").toLowerCase()
+  );
   if (!coordinates) return console.log("No data was found for this city.");
   weatherData.value = await getWeather(coordinates);
-  console.log(weatherData.value);
 });
 </script>
 
@@ -42,11 +43,11 @@ onBeforeMount(async () => {
 .main-data {
   display: flex;
   align-items: center;
-  padding: 16px 0;
+  padding: 10px 0;
 
   .weather-icon {
-    width: 52px;
-    margin: 0 16px;
+    width: 64px;
+    margin: 0 8px 0 16px;
   }
 
   .temperature {
