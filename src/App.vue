@@ -1,6 +1,6 @@
 <template>
-  <Title>Anything</Title>
-  <Settings v-show="showSettings" @close="handleSettingsSwitcherClick" />
+  <WeatherCard v-for="city in cities" :key="city" :city="city" />
+  <Settings v-show="showSettings" @updateCities="handleSettingsUpdateCities" />
   <img
     class="settings-switcher icon-as-button"
     @click="handleSettingsSwitcherClick"
@@ -11,15 +11,23 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Title from "@/components/Title.vue";
 import Settings from "@/components/Settings.vue";
 import GearIcon from "@/assets/gear.svg";
 import CloseIcon from "@/assets/close.svg";
+import WeatherCard from "@/components/WeatherCard.vue";
 
 const showSettings = ref(false);
 
+const cities = ref<string[]>(
+  JSON.parse(localStorage.getItem("cities") || "[]")
+);
+
 const handleSettingsSwitcherClick = () => {
   showSettings.value = !showSettings.value;
+};
+
+const handleSettingsUpdateCities = (newCities: string[]) => {
+  cities.value = newCities;
 };
 </script>
 
