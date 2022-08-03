@@ -26,10 +26,12 @@ const cities = ref<string[]>(
 if (!cities.value.length) {
   navigator.geolocation.getCurrentPosition(
     async (pos) => {
-      const cityData = await getCityData(
+      const { name, country } = await getCityData(
         pos.coords.latitude,
         pos.coords.longitude
       );
+      cities.value.push(`${name}, ${country}`);
+      localStorage.setItem("cities", JSON.stringify(cities.value));
     },
     (err) => {
       console.log(err);
