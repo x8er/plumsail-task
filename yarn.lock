@@ -2280,6 +2280,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001370, caniuse-lite@^1.0.30001373:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001373.tgz#2dc3bc3bfcb5d5a929bec11300883040d7b4b4be"
   integrity sha512-pJYArGHrPp3TUqQzFYRmP/lwJlj8RCbVe3Gd3eJQkAV8SAC6b19XS9BjMvRdvaS8RMkaTN8ZhoHP6S1y8zzwEQ==
 
+cardinal-direction@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/cardinal-direction/-/cardinal-direction-1.1.1.tgz#0ca19ee424662caac553fa9b9ab0c69ad49f6f81"
+  integrity sha512-TkVp8I4wIDmgG1i3zuggwUw0CusChN4qiEi4RWKhr7a4uwE+WjNo6OACCmCGMQ7vOOPkeJXVAvRB2oKm6nEc1Q==
+
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"

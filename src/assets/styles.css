@@ -1,3 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
 .icon-as-button {
   cursor: pointer;
+}
+
+p,
+span {
+  line-height: 1;
+}
+
+img {
+  display: block;
+}
+
+input {
+  padding: 0;
+  border: 0;
+  width: 100%;
 }

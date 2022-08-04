@@ -49,9 +49,9 @@ export interface IWeatherResponse {
   /**
    * Wind speed (meter/sec)
    */
-  speed: number;
+  wind_speed: number;
   /**
    * Wind direction (degrees)
    */
-  deg: number;
+  wind_deg: number;
 }

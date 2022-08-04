@@ -8,8 +8,7 @@
 .title {
   display: block;
   padding: 6px 0;
-  line-height: 1;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 </style>

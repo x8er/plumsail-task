@@ -1,6 +1,10 @@
 <template>
   <WeatherCard v-for="city in cities" :key="city" :city="city" />
-  <Settings v-show="showSettings" @updateCities="handleSettingsUpdateCities" />
+  <Settings
+    v-show="showSettings"
+    :cities="cities"
+    @updateCities="handleSettingsUpdateCities"
+  />
   <img
     class="settings-switcher icon-as-button"
     @click="handleSettingsSwitcherClick"
@@ -45,6 +49,7 @@ const handleSettingsSwitcherClick = () => {
 
 const handleSettingsUpdateCities = (newCities: string[]) => {
   cities.value = newCities;
+  localStorage.setItem("cities", JSON.stringify(newCities));
 };
 </script>
 
@@ -53,11 +58,13 @@ const handleSettingsUpdateCities = (newCities: string[]) => {
 
 weather-widget {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 180px;
+  width: 200px;
+  row-gap: 20px;
 
   .settings-switcher {
     position: absolute;
