@@ -46,7 +46,6 @@ const inputValue = ref("");
 
 const startDrag = (event: DragEvent, index: string) => {
   if (!event.dataTransfer) return;
-  console.log(event);
   event.dataTransfer.setDragImage(
     (event.target as HTMLImageElement).parentElement!,
     10,

@@ -27,6 +27,15 @@ const cities = ref<string[]>(
   JSON.parse(localStorage.getItem("cities") || "[]")
 );
 
+const handleSettingsSwitcherClick = () => {
+  showSettings.value = !showSettings.value;
+};
+
+const handleSettingsUpdateCities = (newCities: string[]) => {
+  cities.value = newCities;
+  localStorage.setItem("cities", JSON.stringify(newCities));
+};
+
 if (!cities.value.length) {
   navigator.geolocation.getCurrentPosition(
     async (pos) => {
@@ -37,20 +46,13 @@ if (!cities.value.length) {
       cities.value.push(`${name}, ${country}`);
       localStorage.setItem("cities", JSON.stringify(cities.value));
     },
-    (err) => {
-      console.log(err);
+    async () => {
+      const { name, country } = await getCityData("London");
+      cities.value.push(`${name}, ${country}`);
+      localStorage.setItem("cities", JSON.stringify(cities.value));
     }
   );
 }
-
-const handleSettingsSwitcherClick = () => {
-  showSettings.value = !showSettings.value;
-};
-
-const handleSettingsUpdateCities = (newCities: string[]) => {
-  cities.value = newCities;
-  localStorage.setItem("cities", JSON.stringify(newCities));
-};
 </script>
 
 <style lang="scss">
