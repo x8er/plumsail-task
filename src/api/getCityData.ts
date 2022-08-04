@@ -3,20 +3,22 @@ import { ICityDataResponse } from "@/types/api";
 import { AxiosRequestConfig } from "axios";
 
 const fetchGeoApi = async (url: string, config: AxiosRequestConfig) => {
-  const { data } = await axiosInstance.get(url, config).catch((err) => {
+  try {
+    const { data } = await axiosInstance.get(url, config);
+
+    if (!data.length) return false;
+
+    return {
+      name: data[0].name,
+      country: data[0].country,
+      lat: data[0].lat,
+      lon: data[0].lon,
+    } as ICityDataResponse;
+  } catch (err) {
     throw new Error(
       `Something happened while executing the ${fetchGeoApi.name} request.\n${err}`
     );
-  });
-
-  if (!data.length) return false;
-
-  return {
-    name: data[0].name,
-    country: data[0].country,
-    lat: data[0].lat,
-    lon: data[0].lon,
-  } as ICityDataResponse;
+  }
 };
 
 /**
